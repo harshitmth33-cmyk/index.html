@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARSHIT | THE FF LEGEND</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Black', Gadget, sans-serif;
+        }
+        body {
+            background-color: #0d0714;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 1. INTRO ANIMATION SCREEN */
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #1a0b2e 0%, #05020a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: fadeOut 1.5s ease 4s forwards; /* 4 second baad disappear hoga */
+        }
+        .intro-name {
+            font-size: 3.5rem;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px #ff3333, 0 0 40px #ff0000;
+            animation: glitch 1s linear infinite, zoomIn 1.5s ease-out;
+        }
+        .intro-game {
+            font-size: 1.5rem;
+            color: #ffaa00;
+            margin-top: 10px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ffaa00;
+            opacity: 0;
+            animation: fadeInText 1s ease-out 1.5s forwards;
+        }
+
+        /* 2. MAIN CONTENT SCREEN (MONTAGE) */
+        .main-content {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInMain 1.5s ease-out 5s forwards; /* Intro khatam hone ke baad aayega */
+        }
+        .main-content h2 {
+            font-size: 2rem;
+            color: #ffaa00;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            border: 3px solid #ff3333;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255, 51, 51, 0.4);
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ANIMATIONS CODE */
+        @keyframes zoomIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+        @keyframes fadeInMain {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff0000, -2px -2px #00ffea; }
+            50% { text-shadow: -2px 3px #ff0000, 2px -1px #00ffea; }
+            100% { text-shadow: 2px -2px #ff0000, -2px 2px #00ffea; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro-screen">
+        <div class="intro-name">HARSHIT</div>
+        <div class="intro-game">FREE FIRE LEGEND</div>
+    </div>
+
+    <div class="main-content">
+        <h2>MY BEST MONTAGE</h2>
+        <div class="video-container">
+            <video id="myMontage" controls autoplay loop muted>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Intro animation khatam hote hi video ka sound un-mute karne ke liye automatic system
+        window.addEventListener('load', () => {
+            const video = document.getElementById('myMontage');
+            setTimeout(() => {
+                video.muted = false; // Video ki aawaz khud chalu ho jayegi
+                video.play();
+            }, 5000); // 5 second ke intro ke baad
+        });
+    </script>
+
+</body>
+</html>
